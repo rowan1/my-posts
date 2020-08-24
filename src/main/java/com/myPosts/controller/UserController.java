@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 //creating RestController
 @RestController
 public class UserController {
-    //autowired the UserService class
+    //auto wired the UserService class
     @Autowired
     UserService userService;
 
