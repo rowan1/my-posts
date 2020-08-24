@@ -18,10 +18,11 @@ import lombok.Setter;
 //defining class name as Table name
 @Table(name = "user")
 public class User implements Serializable {
+
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Id
+    private long id;
 //defining id as column name
-    @Column
-    private int id;
     @Column(unique = true)
     private String userName;
     @Column

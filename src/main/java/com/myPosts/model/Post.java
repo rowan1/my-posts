@@ -13,8 +13,10 @@ import java.util.Date;
 @Entity
 @Table(name="post")
 public class Post {
-    @Id
 
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id
+    private long id;
     @Column
     private String content;
     @Column
