@@ -1,6 +1,7 @@
 package com.myPosts.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -27,8 +28,10 @@ public class User implements Serializable {
     private String fullName;
     @JsonIgnore
     private String password;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     @OneToMany(targetEntity = Post.class)
     private List<Post> posts;

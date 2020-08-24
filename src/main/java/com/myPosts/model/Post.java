@@ -2,12 +2,10 @@ package com.myPosts.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Getter
@@ -23,6 +21,8 @@ public class Post {
     private PostStatus status;
     @Column
     private String authorId;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
-    private Date createdAt;
+    private Date createdAt = new Date();
 }

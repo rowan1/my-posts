@@ -26,9 +26,11 @@ public class PostController {
                 .body(service.searchPosts( text));
     }
     @PostMapping("post")
-    private ResponseEntity<Post> save(@RequestBody Post body){
-        return ResponseEntity
+    private ResponseEntity save(@RequestBody Post post){
+        Post savedPost = service.save(post);
+        return savedPost != null? ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(service.save( body));
+                .body(service.save(post)): (ResponseEntity) ResponseEntity
+                .status(HttpStatus.BAD_REQUEST);
     }
 }

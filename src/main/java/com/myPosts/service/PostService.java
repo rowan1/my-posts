@@ -38,7 +38,7 @@ public class PostService {
         CriteriaQuery<Post> criteriaQuery = criteriaBuilder.createQuery(Post.class);
         Root<Post> postRoot = criteriaQuery.from(Post.class);
         List<Predicate> predicates = new ArrayList<>();
-        predicates.add(criteriaBuilder.like(postRoot.get("content"), text));
+        predicates.add(criteriaBuilder.like(postRoot.get("content"), "%"+text+"%"));
         criteriaQuery.where(predicates.toArray(new Predicate[0]));
         posts = entityManager.createQuery(criteriaQuery).getResultList();
         return posts;
