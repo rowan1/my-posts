@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     private UserDetailsService jwtUserDetailsService;
     @Autowired
     private JwtRequestFilter jwtRequestFilter;
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 // configure AuthenticationManager so that it knows from where to load
@@ -32,21 +33,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 // Use BCryptPasswordEncoder
         auth.userDetailsService(jwtUserDetailsService).passwordEncoder(passwordEncoder());
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
 // We don't need CSRF for this example
         httpSecurity.csrf().disable()
 // dont authenticate this particular request
-                .authorizeRequests().antMatchers("/authenticate").permitAll().
+                .authorizeRequests().antMatchers("/authenticate", "/v2/api-docs",
+                "/configuration/ui",
+                "/swagger-resources/**",
+                "/configuration/security",
+                "/swagger-ui.html",
+                "/webjars/**").permitAll().
 // all other requests need to be authenticated
         anyRequest().authenticated().and().
 // make sure we use stateless session; session won't be used to
