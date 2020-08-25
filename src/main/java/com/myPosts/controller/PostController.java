@@ -1,7 +1,8 @@
 package com.myPosts.controller;
 
-import com.myPosts.model.Post;
-import com.myPosts.model.User;
+import com.myPosts.controller.security.AbstractController;
+import com.myPosts.model.post.Post;
+import com.myPosts.model.user.User;
 import com.myPosts.service.PostService;
 import org.json.JSONException;
 import org.json.JSONObject;

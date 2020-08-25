@@ -1,4 +1,4 @@
-package com.myPosts.config;
+package com.myPosts.config.swagger;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;

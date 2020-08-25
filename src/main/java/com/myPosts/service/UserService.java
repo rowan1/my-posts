@@ -3,8 +3,8 @@ package com.myPosts.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.myPosts.model.User;
-import com.myPosts.model.UserPrincipal;
+import com.myPosts.model.user.User;
+import com.myPosts.model.user.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

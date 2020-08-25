@@ -1,9 +1,8 @@
-package com.myPosts.controller;
+package com.myPosts.controller.security;
 
 import com.myPosts.config.JwtTokenUtil;
-import com.myPosts.model.JwtRequest;
-import com.myPosts.model.JwtResponse;
-import com.myPosts.model.User;
+import com.myPosts.model.security.JwtRequest;
+import com.myPosts.model.security.JwtResponse;
 import com.myPosts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

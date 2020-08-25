@@ -1,6 +1,6 @@
-package com.myPosts.controller;
+package com.myPosts.controller.security;
 
-import com.myPosts.model.UserPrincipal;
+import com.myPosts.model.user.UserPrincipal;
 import org.springframework.security.core.Authentication;
 
 public abstract class AbstractController {

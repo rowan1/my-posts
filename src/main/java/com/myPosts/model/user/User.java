@@ -1,4 +1,4 @@
-package com.myPosts.model;
+package com.myPosts.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.CreationTimestamp;

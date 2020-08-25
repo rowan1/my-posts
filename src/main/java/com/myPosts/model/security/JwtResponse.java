@@ -1,4 +1,4 @@
-package com.myPosts.model;
+package com.myPosts.model.security;
 
 import java.io.Serializable;
 

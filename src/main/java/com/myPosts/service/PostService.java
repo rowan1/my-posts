@@ -1,12 +1,9 @@
 package com.myPosts.service;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import com.google.common.collect.Lists;
-import com.myPosts.model.Post;
-import com.myPosts.model.PostStatus;
-import com.myPosts.model.User;
+import com.myPosts.model.post.Post;
+import com.myPosts.model.post.PostStatus;
+import com.myPosts.model.user.User;
 import com.myPosts.repository.PostRepository;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,5 +1,6 @@
-package com.myPosts.model;
+package com.myPosts.model.post;
 
+import com.myPosts.model.user.User;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;

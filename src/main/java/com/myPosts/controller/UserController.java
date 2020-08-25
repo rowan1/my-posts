@@ -2,7 +2,8 @@ package com.myPosts.controller;
 
 import java.util.List;
 
-import com.myPosts.model.User;
+import com.myPosts.controller.security.AbstractController;
+import com.myPosts.model.user.User;
 import com.myPosts.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
-public class UserController extends AbstractController{
+public class UserController extends AbstractController {
     @Autowired
     UserService userService;
 
