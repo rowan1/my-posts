@@ -1,6 +1,5 @@
 package com.myPosts.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.myPosts.model.Post;
 import com.myPosts.model.User;
 import com.myPosts.service.PostService;
@@ -21,17 +20,24 @@ public class PostController extends AbstractController {
         return service.getAllPosts();
     }
 
-    @GetMapping("/post/search")
-    private ResponseEntity<List<Post>> getPostByText(@RequestParam String text){
-//        User user = getUserDetails(authentication).getUser();
+    @GetMapping("post/user")
+    private ResponseEntity<List<Post>> getUserPosts(Authentication authentication){
+        User user = getUserDetails(authentication).getUser();
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(service.searchPosts(text));
+                .body(service.getUserPosts(user));
+    }
+    @GetMapping("/post/search")
+    private ResponseEntity<List<Post>> getPostByText(@RequestParam String text, Authentication authentication){
+        User user = getUserDetails(authentication).getUser();
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(service.searchPosts(user, text));
     }
     @PostMapping("post")
     private ResponseEntity save(@RequestBody Post post, Authentication authentication){
         User user = getUserDetails(authentication).getUser();
-        Post savedPost = service.save(post, user.getId());
+        Post savedPost = service.save(post, user);
         return savedPost != null? ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(savedPost): (ResponseEntity) ResponseEntity

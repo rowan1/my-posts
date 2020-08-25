@@ -1,6 +1,7 @@
 package com.myPosts.service;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.common.collect.Lists;
 import com.myPosts.model.Post;
 import com.myPosts.model.PostStatus;
 import com.myPosts.model.User;
@@ -29,22 +30,29 @@ public class PostService {
         postRepository.findAll().forEach(post -> posts.add(post));
         return posts;
     }
-    public Post save(Post body, long authorId){
-        body.setAuthorId(authorId);
+    public Post save(Post body, User user){
+        body.setUser(user);
         Post post = postRepository.save(body);
         return post;
     }
-    public List<Post> searchPosts( String text){
+    public List<Post> searchPosts( User user, String text){
+        String[] words = text.split(" ");
         List<Post> posts = new ArrayList<>();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Post> criteriaQuery = criteriaBuilder.createQuery(Post.class);
         Root<Post> postRoot = criteriaQuery.from(Post.class);
         List<Predicate> predicates = new ArrayList<>();
-
-        predicates.add(criteriaBuilder.like(postRoot.get("content"), "%"+text+"%"));
+        for(String word: words){
+            predicates.add(criteriaBuilder.like(postRoot.get("content"), "%"+word+"%"));
+        }
         predicates.add(criteriaBuilder.equal(postRoot.get("status"), PostStatus.PUBLIC));
         criteriaQuery.where(predicates.toArray(new Predicate[0]));
         posts = entityManager.createQuery(criteriaQuery).getResultList();
+
+        return posts;
+    }
+    public List<Post> getUserPosts(User user){
+        List<Post> posts = postRepository.getUserPosts(user.getId());
         return posts;
     }
 }

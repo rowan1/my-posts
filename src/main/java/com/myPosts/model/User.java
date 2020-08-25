@@ -34,6 +34,4 @@ public class User implements Serializable {
     @CreatedDate
     private Date createdAt = new Date();
 
-    @OneToMany(targetEntity = Post.class , fetch = FetchType.EAGER)
-    private List<Post> posts;
 }
