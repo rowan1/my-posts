@@ -15,6 +15,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.EntityType;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +42,16 @@ public class PostService {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Post> criteriaQuery = criteriaBuilder.createQuery(Post.class);
         Root<Post> postRoot = criteriaQuery.from(Post.class);
+        EntityType<Post> post = entityManager.getMetamodel().entity(Post.class);
         List<Predicate> predicates = new ArrayList<>();
         for(String word: words){
-            predicates.add(criteriaBuilder.like(postRoot.get("content"), "%"+word+"%"));
+            predicates.add(criteriaBuilder.like(criteriaBuilder.lower(
+                    postRoot.get(
+                            post.getDeclaredSingularAttribute("content", String.class)
+                    )
+                    ), "%" + word.toLowerCase() + "%"));
+
+//                    postRoot.get("content"), "%"+word+"%"));
         }
         predicates.add(criteriaBuilder.equal(postRoot.get("status"), PostStatus.PUBLIC));
         criteriaQuery.where(predicates.toArray(new Predicate[0]));
