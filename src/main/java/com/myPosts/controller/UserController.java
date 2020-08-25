@@ -17,13 +17,11 @@ public class UserController extends AbstractController{
     @Autowired
     UserService userService;
 
-    //creating a get mapping that retrieves all the users detail from the database
     @GetMapping("/user")
     private List<User> getAllUsers(Authentication auth) {
         return userService.getAllUsers();
     }
 
-    //creating a get mapping that retrieves the detail of a specific user
     @GetMapping("/user/info")
     private User getUser(Authentication authentication) {
         User user = getUserDetails(authentication).getUser();

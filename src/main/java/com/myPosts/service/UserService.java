@@ -17,14 +17,12 @@ public class UserService implements UserDetailsService {
     @Autowired
     UserRepository userRepository;
 
-    //getting all student records
     public List<User> getAllUsers() {
         List<User> users = new ArrayList<User>();
         userRepository.findAll().forEach(user -> users.add(user));
         return users;
     }
 
-    //getting a specific record
     public User getUserById(long id) {
         return userRepository.findById(id).get();
     }

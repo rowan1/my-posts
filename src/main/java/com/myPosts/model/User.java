@@ -7,7 +7,6 @@ import org.springframework.data.annotation.CreatedDate;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,12 +22,16 @@ public class User implements Serializable {
     @Id
     private long id;
 //defining id as column name
-    @Column(unique = true)
+    @Column(unique = true, name = "user_name", nullable = false)
     private String userName;
-    @Column
+
+    @Column(name="full_name", nullable = false)
     private String fullName;
+
     @JsonIgnore
+    @Column(name = "password", nullable = false)
     private String password;
+
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate

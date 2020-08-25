@@ -20,9 +20,11 @@ public class Post implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Id
     private long id;
-    @Column
+
+    @Column(name = "content", nullable = false)
     private String content;
-    @Column
+
+    @Column(name = "status", nullable = false)
     private PostStatus status;
 
     @CreationTimestamp
