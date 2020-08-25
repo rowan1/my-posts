@@ -23,7 +23,7 @@ public class Post implements Serializable {
     @Column
     private PostStatus status;
     @Column
-    private String authorId;
+    private long authorId;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate

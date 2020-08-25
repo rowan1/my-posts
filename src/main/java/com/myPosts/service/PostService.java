@@ -2,6 +2,7 @@ package com.myPosts.service;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.myPosts.model.Post;
+import com.myPosts.model.PostStatus;
 import com.myPosts.model.User;
 import com.myPosts.repository.PostRepository;
 import javafx.geometry.Pos;
@@ -28,17 +29,20 @@ public class PostService {
         postRepository.findAll().forEach(post -> posts.add(post));
         return posts;
     }
-    public Post save(Post body){
+    public Post save(Post body, long authorId){
+        body.setAuthorId(authorId);
         Post post = postRepository.save(body);
         return post;
     }
-    public List<Post> searchPosts(String text){
+    public List<Post> searchPosts( String text){
         List<Post> posts = new ArrayList<>();
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Post> criteriaQuery = criteriaBuilder.createQuery(Post.class);
         Root<Post> postRoot = criteriaQuery.from(Post.class);
         List<Predicate> predicates = new ArrayList<>();
+
         predicates.add(criteriaBuilder.like(postRoot.get("content"), "%"+text+"%"));
+        predicates.add(criteriaBuilder.equal(postRoot.get("status"), PostStatus.PUBLIC));
         criteriaQuery.where(predicates.toArray(new Predicate[0]));
         posts = entityManager.createQuery(criteriaQuery).getResultList();
         return posts;
