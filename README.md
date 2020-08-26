@@ -20,31 +20,30 @@
 
 ## Test data:
 ### Users test:
-`Uer test
+* `User test
 {
   "password": "ben",
   "username": "test"
-}
-User test_1
+}`
+* `User test_1
 {
   "password": "ben",
   "username": "test_1"
-}
-User test_2
+}`
+* `User test_2
 {
   "password": "ben",
   "username": "test_2"
 }`
 ### Posts test
-`For User test
+* `For User test
 {
   "content": "Hello this is Test user creating his first private post",
   "status": "PRIVATE" 
 }
 {
   "content": "Hello this is Test user creating his second private post",
-  "status": "PRIVATE"
-  
+  "status": "PRIVATE" 
 }
 {
   "content": "Hello this is Test user creating his first public post",
@@ -53,8 +52,8 @@ User test_2
 {
   "content": "Hello this is Test user creating his second public post",
   "status": "PUBLIC"
-}
-For User test_1
+}`
+* `For User test_1
 {
   "content": "Hello this is Test_1 user creating his first public post",
   "status": "PUBLIC"
