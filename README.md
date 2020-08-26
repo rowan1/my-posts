@@ -1,24 +1,25 @@
 # my-posts
-git clone https://github.com/rowan1/my-posts.git
-cd my-posts
-Run maven project
-Go to this url: http://localhost:8080/swagger-ui.html
-1- For Authentication Endpoint
-Open Jwt Authentication Controller endpoints
-Post -> /authenticate with any user from Users test
-Copy the token you got from here.
-by click on the Authorize button paste token here by adding add Bearer ${token} in value text input then click authorize then click close.
+## Installation and Execution
+* git clone https://github.com/rowan1/my-posts.git
+* cd my-posts
+* Run maven project
+* Go to this url: http://localhost:8080/swagger-ui.html
+### For Authentication Endpoint
+* Open Jwt Authentication Controller endpoints
+* Post -> /authenticate with any user from Users test
+* Copy the token you got from here.
+* by click on the Authorize button paste token here by adding add Bearer ${token} in value text input then click authorize then click close.
 
-2- For the creation public or private post endpoint:
-Open post controller endpoints
-Enter any of post test data in post object
+### For the creation public or private post endpoint:
+* Open post controller endpoints
+* Enter any of post test data in post object
 
-3- Search for public posts by content text Endpoint
-Get /post/search
-Enter in field text what do you want to search for (multiple words)
+### Search for public posts by content text Endpoint
+* Get /post/search
+* Enter in field text what do you want to search for (multiple words)
 
-Test data:
-Users test:
+## Test data:
+### Users test:
 Uer test
 {
   "password": "ben",
@@ -34,7 +35,7 @@ User test_2
   "password": "ben",
   "username": "test_2"
 }
-Posts test
+### Posts test
 For User test
 {
   "content": "Hello this is Test user creating his first private post",
@@ -45,9 +46,6 @@ For User test
   "status": "PRIVATE"
   
 }
-
-
-
 {
   "content": "Hello this is Test user creating his first public post",
   "status": "PUBLIC"
