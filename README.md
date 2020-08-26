@@ -20,7 +20,7 @@
 
 ## Test data:
 ### Users test:
-Uer test
+`Uer test
 {
   "password": "ben",
   "username": "test"
@@ -34,9 +34,9 @@ User test_2
 {
   "password": "ben",
   "username": "test_2"
-}
+}`
 ### Posts test
-For User test
+`For User test
 {
   "content": "Hello this is Test user creating his first private post",
   "status": "PRIVATE" 
@@ -71,3 +71,4 @@ For User test_1
   "content": "Hello this is Test_1 user creating his second private post",
   "status": "PRIVATE"
 }
+`
